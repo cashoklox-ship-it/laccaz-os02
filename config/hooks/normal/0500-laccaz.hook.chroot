@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+# Preserve Debian ID/version so Debian-aware tools keep working.
+sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME="Laccaz OS 0.3 (Debian 13)"/' /usr/lib/os-release
+printf 'Laccaz OS 0.3 Developer Preview\nBased on Debian 13 (trixie)\n' > /etc/laccaz-release
+printf 'Laccaz OS 0.3 \n \l\n' > /etc/issue
+systemctl enable NetworkManager.service sddm.service
+# Docker remains available through sudo; no automatic docker-group privilege grant.
